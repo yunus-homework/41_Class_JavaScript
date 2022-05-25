@@ -6,13 +6,15 @@ class Human {
     this.surname = surname;
     this.birthday = birthday;
   }
-
   getAgeStudent() {
     return new Date().getFullYear() - this.birthday;
   }
 }
 
 class Student extends Human {
+  _attendance = null;
+  _rating = null;
+
   constructor(...human) {
     super(...human);
     this.attendance = new Array(10);
@@ -67,6 +69,14 @@ class Student extends Human {
     }
   }
 
+  get rating () {
+    return this._rating;
+  }
+
+  set rating (val) {
+    this._rating = val;
+  }
+
   summary() {
     const lessonsEnded = [0, 0];
 
@@ -90,6 +100,14 @@ class Student extends Human {
       return 'Норм, но можно лучше';
     }
     return 'Редиска!';
+  }
+
+  get attendance () {
+    return this._attendance;
+  }
+
+  set attendance (val) {
+    this._attendance = val;
   }
 
 }
