@@ -1,13 +1,22 @@
 'use strict';
 
 class Human {
+  _name = null;
   constructor(name, surname, birthday) {
     this.name = name;
     this.surname = surname;
     this.birthday = birthday;
   }
-  getAgeStudent() {
+   getAge() {
     return new Date().getFullYear() - this.birthday;
+  }
+
+  get name () {
+    return this._name;
+  }
+
+  set name (val) {
+    this._name = val;
   }
 }
 
@@ -36,21 +45,21 @@ class Student extends Human {
 
 
 
-  #valueIndexAttendance() {
+  valueIndexAttendance() {
     return this.attendance.findIndex((element) => element === undefined);
   }
 
   present() {
-    if (this.#valueIndexAttendance() <= 10 && this.#valueIndexAttendance() >= 0) {
-      return (this.attendance[this.#valueIndexAttendance()] = true);
+    if (this.valueIndexAttendance() <= 10 && this.valueIndexAttendance() >= 0) {
+      return (this.attendance[this.valueIndexAttendance()] = true);
     } else {
       console.log('У вас только 10 занятий');
     }
   }
 
   absent() {
-    if (this.#valueIndexAttendance() <= 10 && this.#valueIndexAttendance() >= 0) {
-      return (this.attendance[this.#valueIndexAttendance()] = false);
+    if (this.valueIndexAttendance() <= 10 && this.valueIndexAttendance() >= 0) {
+      return (this.attendance[this.valueIndexAttendance()] = false);
     } else {
       console.log('У вас только 10 занятий');
     }
@@ -114,34 +123,22 @@ class Student extends Human {
 
 const newStudent = new Student('Johny', 'Depp', 1970);
 
-newStudent.absent();
-newStudent.absent();
-newStudent.absent();
-newStudent.present();
-newStudent.present();
-newStudent.present();
 newStudent.mark(10);
-newStudent.mark(4);
-newStudent.mark(3);
+newStudent.mark(8);
+newStudent.mark(7);
 
-console.log(newStudent.getAgeStudent());
+console.log(newStudent.getAge());
 console.log(newStudent.summary());
 console.log(newStudent.gradePointAverage());
 console.log(newStudent);
 
 const newStudent2 = new Student('Nicole', 'Kidman', 1990);
 
-newStudent2.absent();
-newStudent2.absent();
-newStudent2.absent();
-newStudent2.present();
-newStudent2.present();
-newStudent2.present();
 newStudent2.mark(10);
 newStudent2.mark(9);
 newStudent2.mark(8);
 
-console.log(newStudent2.getAgeStudent());
+console.log(newStudent2.getAge());
 console.log(newStudent.gradePointAverage());
 console.log(newStudent2.summary());
 console.log(newStudent2);
